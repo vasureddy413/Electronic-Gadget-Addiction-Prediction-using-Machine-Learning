@@ -1,0 +1,60 @@
+https://www.kaggle.com/datasets/ayyappanmarimuthu/smartphone-usage-lifestyle-gadget-addiction-data/data
+
+
+Workflow Steps
+---------------
+
+1. Data Ingestion
+	Input: Gadget addiction Dataset
+	Load into Pandas DataFrame.
+
+2. Data Preprocessing
+	- Remove the Null values
+	- Remove the Duplicates
+
+3. Encoding
+	- Label Encoding
+
+4. Data Balancing
+	- SMOTE
+
+5. Feature Selection 
+	- Using RFE
+
+6. Data Visualization
+	- Distribution of Classification outcome
+	- Correlation Matrix
+
+7. Train and test split
+
+8. Model Training
+	- Random Forest
+	- SVM
+	- XGBoost
+	- MLP
+	- Voting Classifier(GB, LGBM, XGB, CAT)
+	- LSTM
+	- CNN + LSTM
+
+
+9. Evaluation
+
+	- Evaluate on test set using:
+		- Accuracy, Precision, Recall, F1-score.
+		- Confusion matrix to see false positives & negatives.
+
+	- Explainable AI (XAI) Visualizations
+		- Using LIME and SHAP
+
+10. Save Artifacts
+	- Save best performing model.
+
+11. Flask Web App
+
+	Frontend (HTML):
+		Input form for gadget addiction detection.
+	Backend (Flask):
+		Load saved model.
+		Preprocess incoming features.
+		Predict intrusion type.
+	Return result to user.

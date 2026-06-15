@@ -1,0 +1,370 @@
+/* Graphs page specific styles */
+
+/* Navbar styling - matches template design */
+/* Override custom styles to use template's native structure */
+.header-area .main-nav {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.header-area .main-nav .logo {
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.header-area .main-nav .logo h1 {
+  line-height: 100px;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.background-header .main-nav .logo h1 {
+  line-height: 80px;
+}
+
+.background-header .main-nav {
+  height: 80px;
+}
+
+.background-header .main-nav .logo {
+  height: 80px;
+}
+
+.header-area .main-nav ul.nav {
+  flex-basis: 100%;
+  margin-top: 0;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+}
+
+.header-area .main-nav .nav li:last-child {
+  padding-right: 0px;
+}
+
+.header-area .main-nav .nav li {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100px;
+  line-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.header-area .main-nav .nav li a {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 500;
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  text-transform: capitalize;
+  color: #1e1e1e;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  border: transparent;
+  letter-spacing: .25px;
+  white-space: nowrap;
+}
+
+.header-area .main-nav .nav li:last-child a {
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  border-radius: 20px;
+  padding-left: 0px;
+}
+
+.header-area .main-nav .nav li:last-child a i {
+  background-color: #f35525;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+  margin-left: -1px;
+}
+
+.header-area .main-nav .nav li:last-child:hover a {
+  background-color: #1e1e1e;
+}
+
+.header-area .main-nav .nav li:last-child:hover a i {
+  color: #fff;
+}
+
+.header-area .main-nav .nav li:hover a {
+  color: #f35525;
+}
+
+.header-area .main-nav .nav li a.active {
+  color: #f35525;
+}
+
+/* Dropdown menu - Modern card-style format */
+.header-area .main-nav .nav li.dropdown {
+  position: relative;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-toggle::after {
+  content: "";
+  border-top: 4px solid #1e1e1e;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  margin-left: 6px;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+
+.header-area .main-nav .nav li.dropdown:hover .dropdown-toggle::after,
+.header-area .main-nav .nav li.dropdown .dropdown-toggle[aria-expanded="true"]::after {
+  border-top-color: #f35525;
+  transform: rotate(180deg);
+}
+
+.header-area .main-nav .nav li.dropdown:hover .dropdown-toggle {
+  color: #f35525;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-menu {
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  min-width: 220px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(243, 85, 37, 0.1);
+  margin-top: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform-origin: top center;
+  margin-left: -110px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+  filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  margin-left: -110px;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item {
+  color: #1e1e1e;
+  padding: 14px 24px;
+  transition: all 0.25s ease;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  margin: 2px 8px;
+  border-radius: 8px;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item i {
+  color: #f35525;
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #f35525;
+  transform: scaleY(0);
+  transition: transform 0.25s ease;
+  z-index: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item:hover::before,
+.header-area .main-nav .nav li.dropdown .dropdown-item:focus::before {
+  transform: scaleY(1);
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item:hover,
+.header-area .main-nav .nav li.dropdown .dropdown-item:focus {
+  color: #f35525;
+  background: rgba(243, 85, 37, 0.08);
+  padding-left: 24px;
+  transform: translateX(4px);
+  z-index: 1;
+  position: relative;
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item:hover i,
+.header-area .main-nav .nav li.dropdown .dropdown-item:focus i {
+  color: #f35525;
+  transform: scale(1.15);
+}
+
+.header-area .main-nav .nav li.dropdown .dropdown-item:active {
+  background: rgba(243, 85, 37, 0.15);
+  color: #f35525;
+  transform: translateX(2px);
+}
+
+/* Dropdown divider */
+.header-area .main-nav .nav li.dropdown .dropdown-divider {
+  margin: 8px 0;
+  border-top: 1px solid rgba(243, 85, 37, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .header-area .main-nav .nav li.dropdown .dropdown-menu {
+    position: static;
+    min-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid #eee;
+    margin-top: 0;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .header-area .main-nav .nav li.dropdown .dropdown-item {
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-area .main-nav .nav li.dropdown .dropdown-item:hover {
+    background: linear-gradient(135deg, #f35525 0%, #ff6b4a 100%);
+    transform: none;
+  }
+}
+
+/* Properties Section - Equal Height Cards */
+.properties .properties-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.properties .properties-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.properties .item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+.properties .item p {
+  flex-grow: 1;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.properties .item .main-button {
+  margin-top: auto;
+}
+
+/* Image Normalization */
+.properties .item img {
+  width: 100%;
+  height: 250px;
+  /* Fixed height for all images */
+  object-fit: cover;
+  /* Ensures images fill the box without distortion */
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  /* Placeholder color if image is loading */
+}
+
+.properties .item a.image-popup {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}

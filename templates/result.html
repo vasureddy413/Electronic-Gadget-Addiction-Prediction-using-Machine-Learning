@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>Prediction Results - Electronic Gadget Addiction Prediction</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap core CSS -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="../static/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="../static/assets/css/templatemo-villa-agency.css">
+  <link rel="stylesheet" href="../static/assets/css/owl.css">
+  <link rel="stylesheet" href="../static/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!-- Graphs page specific styles -->
+  <link rel="stylesheet" href="../static/css/graphs.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../static/css/style-custom.css">
+
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!--  -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="/home" class="logo">
+              <h1>GadgetAddiction AI</h1>
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li>
+                <a href="/home">Prediction</a>
+              </li>
+              <li>
+                <a href="/graphs">Data Visualization</a>
+              </li>
+              <li>
+                <a href="../static/Notebook.html">Notebook</a>
+              </li>
+              <li>
+                <a href="/"><i class="fa fa-sign-out"></i> Logout</a>
+              </li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <h3>Gadget Addiction Prediction Result</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="result-card">
+            <div class="text-center mb-4">
+              <span class="category prediction-badge">Analysis
+                Outcome</span>
+              <h2 class="prediction-subtitle">Addiction Level Analysis</h2>
+            </div>
+            <div class="prediction-value prediction-display">
+              {% if classification_result %}
+              {{ classification_result }}
+              {% else %}
+              N/A
+              {% endif %}
+            </div>
+
+            {% if confidence_score %}
+            <div class="confidence-container">
+              <div class="label-group">
+                <span class="confidence-label"><i class="bi bi-shield-check"></i> Prediction Confidence</span>
+                <span class="confidence-value">{{ confidence_score }}</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                  style="width: 0%;" data-confidence="{{ confidence_score }}">
+                  {{ confidence_score }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="text-center">
+              {% if classification_result %}
+              <p class="analysis-text">
+                {% if classification_result == "High" %}
+                <i class="bi bi-exclamation-triangle-fill text-danger"></i> Warning: High risk of gadget addiction
+                detected.
+                {% elif classification_result == "Moderate" %}
+                <i class="bi bi-info-circle-fill text-warning"></i> Notice: Moderate gadget usage patterns observed.
+                {% else %}
+                <i class="bi bi-check-circle-fill text-success"></i> Good News: Gadget usage is within healthy limits.
+                {% endif %}
+              </p>
+              {% else %}
+              <p class="analysis-text-small">Classification result based on behavioral analysis</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if classification_result %}
+      <div class="row mt-4 g-4 result-details">
+        <!-- Grid 1: Risks -->
+        <div class="col-md-6 animate-up">
+          <div
+            class="analysis-card h-100 border-start border-4 {% if classification_result == 'High' %}border-danger{% elif classification_result == 'Moderate' %}border-warning{% else %}border-success{% endif %}">
+            <h4 class="analysis-header">
+              <i class="bi bi-exclamation-octagon text-primary-custom icon-margin"></i> Risk Assessment
+            </h4>
+            <ul class="analysis-list mt-3">
+              {% if classification_result == "High" %}
+              <li><strong>Physical:</strong> Chronic insomnia, severe eye strain, and "Tech Neck" posture issues.</li>
+              <li><strong>Mental:</strong> Heightened anxiety, emotional volatility, and dopamine dysregulation.</li>
+              <li><strong>Social:</strong> Significant withdrawal from real-world relationships and isolation.</li>
+              <li><strong>Cognitive:</strong> Drastic reduction in attention span and executive function.</li>
+              {% elif classification_result == "Moderate" %}
+              <li><strong>Physical:</strong> Occasional dryness of eyes and disrupted sleep cycles.</li>
+              <li><strong>Mental:</strong> Mild dependency leading to irritability when away from devices.</li>
+              <li><strong>Social:</strong> "Phubbing" (ignoring others for your phone) during social events.</li>
+              <li><strong>Cognitive:</strong> Noticeable drops in productivity due to mindless scrolling.</li>
+              {% else %}
+              <li><strong>Physical:</strong> Minimal physiological impact; healthy activity levels.</li>
+              <li><strong>Mental:</strong> Strong emotional resilience and high self-control over usage.</li>
+              <li><strong>Social:</strong> Meaningful and present social interactions.</li>
+              <li><strong>Cognitive:</strong> High focus and effective time management skills.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Grid 2: Immediate Tips -->
+        <div class="col-md-6 animate-up" style="animation-delay: 0.1s;">
+          <div
+            class="analysis-card h-100 border-start border-4 {% if classification_result == 'High' %}border-danger{% elif classification_result == 'Moderate' %}border-warning{% else %}border-success{% endif %}">
+            <h4 class="analysis-header">
+              <i class="bi bi-lightning-charge text-primary-custom icon-margin"></i> Strategy Tips
+            </h4>
+            <ul class="analysis-list mt-3">
+              {% if classification_result == "High" %}
+              <li><strong>Phone Detox:</strong> Start with a 24-hour total digital fast this weekend.</li>
+              <li><strong>No-Tech Zones:</strong> Declare the bedroom and dining table as gadget-free zones.</li>
+              <li><strong>Notification Purge:</strong> Delete all non-essential apps that trigger usage.</li>
+              <li><strong>Accountability:</strong> Inform a friend or family member about your detox goal.</li>
+              {% elif classification_result == "Moderate" %}
+              <li><strong>App Limits:</strong> Use built-in screen time features to limit social media.</li>
+              <li><strong>Morning Routine:</strong> Avoid checking your phone for the first 30 minutes.</li>
+              <li><strong>Batch Tasks:</strong> Dedicate specific times for emails and messages.</li>
+              <li><strong>Gray-Scale:</strong> Switch your phone to grayscale to make it less stimulating.</li>
+              {% else %}
+              <li><strong>Audit:</strong> Review your usage weekly to catch any emerging trends.</li>
+              <li><strong>Analog Hobbies:</strong> Spend at least 1 hour daily on non-digital activities.</li>
+              <li><strong>Mindfulness:</strong> Practice 5 minutes of meditation before opening your laptop.</li>
+              <li><strong>Balance:</strong> Keep using your "Night Shift" mode to protect sleep quality.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Grid 3: Future Recommendations -->
+        <div class="col-md-6 animate-up" style="animation-delay: 0.2s;">
+          <div
+            class="analysis-card h-100 border-start border-4 {% if classification_result == 'High' %}border-danger{% elif classification_result == 'Moderate' %}border-warning{% else %}border-success{% endif %}">
+            <h4 class="analysis-header">
+              <i class="bi bi-graph-up-arrow text-primary-custom icon-margin"></i> Recommendations
+            </h4>
+            <ul class="analysis-list mt-3">
+              {% if classification_result == "High" %}
+              <li><strong>Professional Help:</strong> Speak with a counselor specializing in behavioral addiction.</li>
+              <li><strong>Hardware Change:</strong> Consider switching to a 'dumb phone' for personal use.</li>
+              <li><strong>Lifestyle:</strong> Enroll in physical classes (gym, dance, sports) to replace screen time.
+              </li>
+              <li><strong>Tracking:</strong> Keep a manual log of your triggers for 7 days.</li>
+              {% elif classification_result == "Moderate" %}
+              <li><strong>Digital Sabbath:</strong> Practice one full day of screen-free living every week.</li>
+              <li><strong>Notification Audit:</strong> Re-audit notifications every month.</li>
+              <li><strong>Work Boundaries:</strong> Set strict "Laptop Closed" times for the ending of work.</li>
+              <li><strong>Device Separation:</strong> Charge your devices in a communal room, not the bedroom.</li>
+              {% else %}
+              <li><strong>Education:</strong> Teach younger family members about digital wellness.</li>
+              <li><strong>Advanced Learning:</strong> Explore complex offline skills like woodworking or painting.</li>
+              <li><strong>Advocacy:</strong> Share your digital balance success story with your community.</li>
+              <li><strong>Optimization:</strong> Regularly clean up cloud storage and digital clutter.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Grid 4: Counter Measures -->
+        <div class="col-md-6 animate-up" style="animation-delay: 0.3s;">
+          <div
+            class="analysis-card h-100 border-start border-4 {% if classification_result == 'High' %}border-danger{% elif classification_result == 'Moderate' %}border-warning{% else %}border-success{% endif %}">
+            <h4 class="analysis-header">
+              <i class="bi bi-shield-check text-primary-custom icon-margin"></i> Counter Measures
+            </h4>
+            <ul class="analysis-list mt-3">
+              {% if classification_result == "High" %}
+              <li><strong>Blockers:</strong> Use apps like 'Freedom' or 'Cold Turkey' on all devices.</li>
+              <li><strong>Physical Barrier:</strong> Use a lockbox for your phone during deep work.</li>
+              <li><strong>Trigger Swap:</strong> When you feel the urge to "scroll", drink a glass of water.</li>
+              <li><strong>Environment:</strong> Rearrange your room to face away from tech setups.</li>
+              {% elif classification_result == "Moderate" %}
+              <li><strong>Muting:</strong> Mute all group chats that aren't time-sensitive.</li>
+              <li><strong>Home Screen:</strong> Hide addictive apps deep inside folders.</li>
+              <li><strong>Browser Clean:</strong> Limit yourself to 5 open tabs at any given time.</li>
+              <li><strong>One Device:</strong> Use only one device for all entertainment needs.</li>
+              {% else %}
+              <li><strong>Standardize:</strong> Maintain a standard "Do Not Disturb" schedule.</li>
+              <li><strong>Efficiency:</strong> Use voice commands for simple tasks to avoid looking at the screen.</li>
+              <li><strong>Backups:</strong> Ensure offline backups of important memories/photos.</li>
+              <li><strong>Reflection:</strong> Pause for 10 seconds before hitting 'refresh' on any feed.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="analysis-card">
+            <h4 class="analysis-header">
+              <i class="fas fa-info-circle text-primary-custom icon-margin"></i>About This Assessment
+            </h4>
+            <p class="analysis-description">This analysis is powered by an Ensemble Machine Learning model (Voting
+              Classifier) that evaluates your digital footprint—including screen time, physiological data like heart
+              rate, and behavioral triggers—to provide a comprehensive wellness score.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="analysis-card">
+            <p class="analysis-description"><strong>Disclaimer:</strong> This tool is for educational and awareness
+              purposes only. If you find your digital habits are causing significant distress, please consult a
+              healthcare professional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-3">
+        <div class="col-lg-12 text-center">
+          <div class="main-button p-2">
+            <a href="/home" class="btn-another">
+              <i class="fa fa-arrow-left icon-margin"></i> Make Another Prediction
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-8 mx-auto text-center">
+        <p>Copyright © 2026 GadgetAddiction AI Research. All rights reserved.
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap 5 JavaScript (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/assets/js/isotope.min.js"></script>
+  <script src="../static/assets/js/owl-carousel.js"></script>
+  <script src="../static/assets/js/counter.js"></script>
+  <script src="../static/assets/js/custom.js"></script>
+
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>
